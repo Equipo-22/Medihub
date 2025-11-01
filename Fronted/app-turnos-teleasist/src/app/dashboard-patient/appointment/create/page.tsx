@@ -173,11 +173,11 @@ const AppointmentModal = ({
 
   const handleNext = () => {
     if (
-      selectedCategory === "Seleccionar categoría" ||
+      selectedCategory === "Seleccionar especialidad" ||
       selectedCategory === "" ||
       selectedCategory === null
     ) {
-      alert("Por favor selecciona una categoría.");
+      alert("Por favor selecciona una especialidad.");
       return;
     }
     if (!isVirtual && !selectedPlace) {
@@ -208,7 +208,7 @@ const AppointmentModal = ({
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Categoría<span className="text-red-500">*</span>
+            Especialidad<span className="text-red-500">*</span>
           </label>
           <select
             required

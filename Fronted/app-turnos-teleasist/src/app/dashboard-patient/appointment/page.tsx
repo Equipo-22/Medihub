@@ -138,7 +138,7 @@ const AppointmentDetail = ({
               variant="outline"
               className="text-secondary border-secondary cursor-pointer"
             >
-              <Link href={appointment?.meetingUrl ?? ""} target="_blank">
+              <Link href={appointment?.meetingUrl ?? "https://meet.google.com/vbg-aqft-nra"} target="_blank">
                 <Video className="text-secondary" />
               </Link>
             </Button>

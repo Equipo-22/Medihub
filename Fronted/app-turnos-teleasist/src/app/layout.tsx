@@ -7,6 +7,9 @@ import LayoutGeneral from "@/_components/layouts/LayoutGeneral";
 export const metadata: Metadata = {
   title: "Medihub",
   description: "Espacio digital para cuidar tu salud de forma simple, segura y conectada.",
+   icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

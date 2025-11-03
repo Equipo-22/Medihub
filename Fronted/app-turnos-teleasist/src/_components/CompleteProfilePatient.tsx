@@ -79,14 +79,12 @@ export function CompleteProfilePatient() {
   };
 
   mutationPostProfile.mutate(payload);
-  console.log(payload);
 }
 
   useEffect(() => {
     if (coberturaValue === "particular") {
       form.setValue("obraSocial", "");
       form.setValue("numeroAfiliado", "");
-      console.log(isDisabled);
     }
   }, [coberturaValue, form]);
 

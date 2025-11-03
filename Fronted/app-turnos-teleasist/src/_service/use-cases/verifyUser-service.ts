@@ -3,13 +3,10 @@ import { VerifyUserType } from "@/_types/verifyUser-type";
 
 export const postVerifyUserRegister = async (data: VerifyUserType) => {
   try {
-    console.log("Payload a enviar:", data);
     const res = await apiAuthService.post("/register/verify-user", data);
-    console.log("Código OK - Usuario verificado");
     return res.data;
   } catch (error: any) {
-    console.log(error);
-    
+  
     const status = error.response?.status;
     const code = error.response?.data?.code;
     const message = error.response?.data?.message;
@@ -30,12 +27,9 @@ export const postVerifyUserRegister = async (data: VerifyUserType) => {
 
 export const postVerifyUserLogin = async (data: VerifyUserType) => {
   try {
-    console.log("Payload a enviar:", data);
     const res = await apiAuthService.post("/login/verify-user", data);
-    console.log("Código OK - Usuario verificado");
     return res.data;
   } catch (error: any) {
-    console.log(error);
     
     const status = error.response?.status;
     const code = error.response?.data?.code;

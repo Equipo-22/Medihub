@@ -56,7 +56,6 @@ export default function VerifyUserLogin() {
   }
 
   const onSubmit = (data: VerificationFormData) => {
-    console.log("hizo click");
     handleVerify(data)
   }
 

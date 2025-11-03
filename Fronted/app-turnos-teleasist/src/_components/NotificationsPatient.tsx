@@ -52,8 +52,7 @@ const handleMarkAsRead = (id: string) => {
   const handleDelete = (id: string) => {
     mutationDeleteNotificationsById.mutate(id, {
       onSuccess: () => {
-        refetch(),
-        console.log('Se eliminó');
+        refetch()
       }
     });
   };

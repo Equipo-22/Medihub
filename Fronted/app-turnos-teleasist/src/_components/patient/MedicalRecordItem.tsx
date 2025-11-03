@@ -24,8 +24,7 @@ const MedicalRecordItem = ({ encounterId }: MedicalRecordItemProps) => {
     const [isPending, setIsPending] = useState(false);
 
     const mutationGetRecordById = useMutation({
-        mutationFn: (id: string) => getRecordById(id),
-        onSuccess: () => console.log("Se obtuvo la historia clínica del paciente"),
+        mutationFn: (id: string) => getRecordById(id)  
     });
 
     useEffect(() => {

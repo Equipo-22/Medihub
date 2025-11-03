@@ -51,7 +51,6 @@ export default function ResetPassForm({ onSuccess }: onSuccessProps) {
           router.push("/login/reset-pass/success")
         }
       }, })
-    console.log(values)
   }
 
   return (

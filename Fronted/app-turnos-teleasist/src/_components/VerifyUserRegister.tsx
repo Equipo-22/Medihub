@@ -6,7 +6,6 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui/button"
 import { verifyUserSchema } from "@/_schemas/verifyUser-schema"
-import Logo from "@/components/ui/Logo"
 import TitleSection from "@/components/ui/TitleSection"
 import { VerifyUserType } from "@/_types/verifyUser-type"
 import { VerifyUserMutationService } from "@/_service/use-mutation-services/verifyUser_mutation-services"
@@ -55,8 +54,6 @@ export default function VerifyUserRegister({ email }: { email: string }) {
   }
 
   const onSubmit = (data: VerificationFormData) => {
-    console.log("hizo click");
-
     handleVerify(data)
   }
 

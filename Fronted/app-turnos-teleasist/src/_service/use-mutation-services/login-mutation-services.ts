@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { postLogin } from "../use-cases/login-service";
 import { LoginType } from "@/_types/login-type";
 import { useRouter } from "next/navigation";
@@ -13,7 +13,6 @@ export const LoginMutationsService = () => {
       return postLogin(data);
     },
     onSuccess: function Exito(_res, variables) {
-        console.log("Login ok");
         setUserData({ email: variables.email });
       router.push("/verify-user-login");
     },

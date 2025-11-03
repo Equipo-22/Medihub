@@ -8,10 +8,7 @@ export const ResetPassMutationsService = () => {
   const mutationPostResetPass = useMutation({
     mutationFn: (data: ResetPassType & { redirect?: boolean; onClose?: () => void }) => {
       return postResetPass(data);
-    },
-    onError: (error) => {
-      console.error("Error en reset password:", error);
-    },
+    }
   });
 
   return {

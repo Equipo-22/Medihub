@@ -10,17 +10,11 @@ export const AppointmentMutationsService = () => {
     mutationFn: (data: AppointmentType) => {
       return postAppointment(data);
     },
-    onSuccess: (data) => {
-      console.log("data", data);
-    },
   });
 
   const mutationGetAppointmentsByIdPatient = useMutation({
     mutationFn: (id: string) => {
       return getAppointmentsByIdPatient(id);
-    },
-    onSuccess: function Exito() {
-      console.log("Se obtuvo las citas del paciente");
     },
   });
 

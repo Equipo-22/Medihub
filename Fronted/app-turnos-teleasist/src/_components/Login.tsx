@@ -20,7 +20,6 @@ import { LoginMutationsService } from "@/_service/use-mutation-services/login-mu
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Logo from "@/components/ui/Logo";
 import TitleSection from "@/components/ui/TitleSection"
 import ContainerMax300 from "@/components/ui/Container-max300";
 import { useUserStore } from "@/store/userStore";
@@ -44,7 +43,6 @@ export default function LoginForm() {
 
   function onSubmit(values: z.infer<typeof loginFormSchema>) {
     mutationPostLogin.mutate(values)
-    console.log(values)
   }
 
   const { clearUserData } = useUserStore();

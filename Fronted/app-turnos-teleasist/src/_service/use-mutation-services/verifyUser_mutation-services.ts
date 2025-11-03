@@ -17,12 +17,8 @@ export const VerifyUserMutationService = () => {
     mutationFn: (data: VerifyUserType) => {
       return postVerifyUserRegister(data);
     },
-    onSuccess: (data) => {
-      console.log("Usuario verificado:", data);
+    onSuccess: () => {
       router.push("/register/success");
-    },
-    onError: (error) => {
-      console.error("Error al verificar:", error);
     },
   });
 
@@ -31,7 +27,6 @@ export const VerifyUserMutationService = () => {
       return postVerifyUserLogin(data);
     },
     onSuccess: (data) => {
-      console.log("Usuario verificado:", data);
       setUserData({
         idUser: data.id,
         email: data.email,
@@ -41,19 +36,14 @@ export const VerifyUserMutationService = () => {
       mutationGetProfileByIdUser.mutate(data.id, {
         onSuccess: (profile) => {
           if (profile && profile.id) {
-            console.log("Perfil encontrado:", profile);
             setUserData({ idPatient: profile.id });
             router.push("/dashboard-patient/inicio");
           }
         },
-        onError: (error) => {
-          console.warn("No se encontró perfil de paciente:", error);
+        onError: () => {
           router.push("/profile-patient");
         },
       });
-    },
-    onError: (error) => {
-      console.error("Error al verificar:", error);
     },
   });
 

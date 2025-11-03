@@ -10,13 +10,10 @@ export const ReqPassResetMutationsService = () => {
     mutationFn: (data: ReqPassResetType & { redirect?: boolean }) => {
       return postReqPassReset(data);
     },
-     onSuccess: function Exito(_res, variables) {
-    if (variables.redirect !== false) { 
-      router.push("/login/reset-pass")
-    }
-  },
-    onError: (error) => {
-      console.error("Error en solicitud de reset:", error);
+    onSuccess: function Exito(_res, variables) {
+      if (variables.redirect !== false) {
+        router.push("/login/reset-pass");
+      }
     },
   });
 

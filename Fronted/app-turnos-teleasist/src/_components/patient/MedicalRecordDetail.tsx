@@ -5,10 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { SlNotebook } from "react-icons/sl";
 import { IoIosArrowForward } from "react-icons/io";
 import { CircleUser } from 'lucide-react';
-import { GrDocumentPdf } from "react-icons/gr";
-import { LuDownload } from "react-icons/lu";
 import { useParams } from 'next/navigation';
-import { Button } from '@/components/ui/button';
 import { DataRecordType } from '@/_types/medicalrecord-type';
 import { useMutation } from '@tanstack/react-query';
 import { getRecordById } from '@/_service/use-cases/medicalRecord-service';
@@ -26,7 +23,6 @@ const MedicalRecordDetail = () => {
 
     const mutationGetRecordById = useMutation({
         mutationFn: (id: string) => getRecordById(id),
-        onSuccess: () => console.log("Se obtuvo la historia clínica del paciente"),
     });
 
     useEffect(() => {
@@ -36,7 +32,6 @@ const MedicalRecordDetail = () => {
         mutationGetRecordById.mutate(idRecord, {
             onSuccess: (data) => {
                 setRecordSelected(data)
-                console.log({ data })
 
                 if (data?.appointment?.startTime) {
                     const rawDate = data.appointment.startTime
@@ -119,32 +114,7 @@ const MedicalRecordDetail = () => {
                     </div>
                 </div>
             </section>
-            {/*    <h3 className='text-lg font-semibold text-muted-foreground my-4'>Documentos adjuntos</h3>
-            <section className='md:col-span-2 md:py-2'>
-                <article className='flex justify-between items-center mb-2 bg-background md:w-[50%] h-min rounded-md p-4'>
-                    <div className='flex items-center gap-3'>
-                        <p className="self-start w-8 h-8 rounded bg-gray-200 flex items-center justify-center">
-                            <GrDocumentPdf className="text-gray-500" />
-                        </p>
-                        <p>Receta médica</p>
-                    </div>
-                    <Button variant={'outline'} className="self-start w-8 h-8 rounded border border-secondary flex items-center justify-center">
-                        <LuDownload className="text-secondary" />
-                    </Button>
-                </article>
-                <article className='flex justify-between items-center mb-2 bg-background md:w-[50%] h-min rounded-md p-4'>
-                    <div className='flex items-center gap-3' >
-                        <p className="self-start w-8 h-8 rounded bg-gray-200 flex items-center justify-center">
-                            <GrDocumentPdf className="text-gray-500" />
-                        </p>
-                        <p>Guía de ejercicios cervicacles</p>
-                    </div>
-                    <Button variant={'outline'} className="self-start w-8 h-8 rounded border border-secondary flex items-center justify-center">
-                        <LuDownload className="text-secondary" />
-                    </Button>
-                </article>
-            </section> */}
-        </div>
+           </div>
     )
 }
 

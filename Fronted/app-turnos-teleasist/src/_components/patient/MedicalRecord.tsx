@@ -3,9 +3,6 @@ import TitleSection from '@/components/ui/TitleSection'
 import React, { useEffect, useState } from 'react'
 import MedicalRecordItem from './MedicalRecordItem'
 import { useUserStore } from '@/store/userStore'
-import { MedicalRecordMutationsService } from '@/_service/use-mutation-services/medicalRecord-mutation-services'
-import { MedicalRecordResponse } from '@/_types/medicalrecord-type'
-import { record } from 'zod/v3'
 import { useMutation } from '@tanstack/react-query'
 import { getMedicalRecordByIdPatient } from '@/_service/use-cases/medicalRecord-service'
 
@@ -21,8 +18,7 @@ const MedicalRecord = () => {
     const [isPending, setIsPending] = useState(false);
 
     const mutationGetMedicalRecordByIdPatient = useMutation({
-        mutationFn: (id: string) => getMedicalRecordByIdPatient(id),
-        onSuccess: () => console.log("Se obtuvo la historia clínica del paciente"),
+        mutationFn: (id: string) => getMedicalRecordByIdPatient(id)
     });
 
 

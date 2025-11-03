@@ -169,8 +169,7 @@ const AppointmentModal = ({
   selectedMotivo,
   setSelectedMotivo,
 }: AppointmentModalProps) => {
-  console.log("doctors", doctors);
-
+ 
   const handleNext = () => {
     if (
       selectedCategory === "Seleccionar especialidad" ||

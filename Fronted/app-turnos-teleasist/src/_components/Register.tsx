@@ -42,7 +42,6 @@ export default function RegisterForm() {
 
   function onSubmit(values: z.infer<typeof registerformSchema>) {
     mutationPostRegister.mutate(values)
-    console.log(values)
   }
   return (
     <Form {...form} >

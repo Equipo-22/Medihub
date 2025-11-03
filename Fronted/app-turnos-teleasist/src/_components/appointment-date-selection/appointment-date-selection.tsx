@@ -53,8 +53,8 @@ const AppointmentDateSelection = ({
           </button>
         </div> */}
 
-        {availability.map((item) => (
-          <div className="flex flex-col gap-2 px-4 py-2 rounded-sm shadow-sm bg-white my-8 lg:px-8 lg:py-4 lg:gap-0 lg:items-center lg:flex-row lg:justify-between w-full">
+        {availability.map((item, index) => (
+          <div key={index} className="flex flex-col gap-2 px-4 py-2 rounded-sm shadow-sm bg-white my-8 lg:px-8 lg:py-4 lg:gap-0 lg:items-center lg:flex-row lg:justify-between w-full">
             <div className="flex gap-10">
               <p className="text-2xl text-secondary font-bold">
                 {new Date(item.startTime).toLocaleDateString("es-ES")}

@@ -1,35 +1,59 @@
-"use client"
+"use client";
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
-import SideBar from '@/_components/SideBar';
-import SideBarMobile from '@/_components/SideBarMobile';
-import { useUserStore } from '@/store/userStore';
-import { useGetNotificationsByIdPatient } from '@/_service/use-queries-services/notification-querie-service';
-
+import SideBar from "@/_components/SideBar";
+import SideBarMobile from "@/_components/SideBarMobile";
+import { useUserStore } from "@/store/userStore";
+import { useGetNotificationsByIdPatient } from "@/_service/use-queries-services/notification-querie-service";
+import { useRouter } from "next/navigation";
 
 const DashboardPatient = ({ children }: { children: React.ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [quantityNotifications, setQuantityNotifications] = useState(0)
+  const [quantityNotifications, setQuantityNotifications] = useState(0);
+  const router = useRouter();
 
-  const { idPatient, email, username } = useUserStore()
+  const { idUser, idPatient, email, username, hasHydrated } = useUserStore();
   const { data: notifications = [] } = useGetNotificationsByIdPatient(idPatient);
- 
- 
+
+
   useEffect(() => {
+    if (!hasHydrated) return; 
 
-    const notReaded = notifications.filter((notification) => notification.read === false)
+    if (!idUser) {
+      router.push("/login");
+      return;
+    }
 
-    setQuantityNotifications(notReaded.length)
+    if (idUser && !idPatient) {
+      router.push("/profile-patient");
+    }
+  }, [idUser, idPatient, hasHydrated, router]);
 
-  }, [!idPatient, notifications])
+  if (!hasHydrated || !idUser) {
+    return (
+      <div className="flex items-center justify-center h-screen text-gray-600">
+        Cargando...
+      </div>
+    );
+  }
+
+  useEffect(() => {
+    const notReaded = notifications.filter(
+      (notification) => notification.read === false
+    );
+    setQuantityNotifications(notReaded.length);
+  }, [notifications]);
 
   return (
     <div className="min-h-screen flex flex-col lg:grid lg:grid-cols-[280px_1fr] bg-gray-50">
-
       {/* Sidebar Mobile */}
-      <SideBarMobile open={isMenuOpen} setOpen={setIsMenuOpen} qtyNotifications={quantityNotifications} />
+      <SideBarMobile
+        open={isMenuOpen}
+        setOpen={setIsMenuOpen}
+        qtyNotifications={quantityNotifications}
+      />
 
       {/* Sidebar Desktop */}
       <aside className="hidden lg:block bg-white shadow-md">
@@ -37,12 +61,14 @@ const DashboardPatient = ({ children }: { children: React.ReactNode }) => {
       </aside>
 
       <main className="flex flex-col w-full">
-
         <header className="w-full h-[10vh] flex items-center p-4 dashboardHeader-bg-gradient lg:border-b">
           <div className="flex justify-between items-center w-full">
-
             <div className="lg:hidden">
-              <img src="/logo-blanco.svg" alt="logo app" className="h-10 ml-2" />
+              <img
+                src="/logo-blanco.svg"
+                alt="logo app"
+                className="h-10 ml-2"
+              />
             </div>
 
             <div className="flex gap-2 items-center justify-end w-full">
